@@ -1,0 +1,16 @@
+body{
+    background-image: url("../images/escola.avif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.login-form{
+    background-color: rgba (255,255,255, 0.8); 
+    width: 40%;
+}
