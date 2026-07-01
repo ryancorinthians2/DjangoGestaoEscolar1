@@ -12,20 +12,25 @@
 </head>
 <body>
 
-    <div class="card">
-        <h1>Área do Aluno</h1>
-        <p><strong>Nome:</strong> Ryan Costa</p>
-        <p><strong>Curso Atual:</strong> Desenvolvimento de Sistemas</p>
-        <hr>
-        <h3>Suas Matérias:</h3>
-        <ul>
-            <li>Lógica de Programação</li>
-            <li>Banco de Dados I</li>
-            <li>Desenvolvimento Web</li>
-        </ul>
-        <br>
-        <a href="{% url 'index' %}">Sair / Voltar</a>
-    </div>
-
+   <div class="card">
+    <h1>Área do Aluno</h1>
+    
+    <p><strong>Nome:</strong> {{ nome_aluno }}</p>
+    <p><strong>Curso Atual:</strong> {{ curso }}</p>
+    
+    <hr>
+    
+    <h3>Suas Matérias:</h3>
+    <ul>
+        {% for disciplina in disciplinas %}
+            <li>{{ disciplina.nome }}</li>
+        {% empty %}
+            <li>Nenhuma disciplina disponível para este curso.</li>
+        {% endfor %}
+    </ul>
+    
+    <br>
+    <a href="{% url 'index' %}" class="voltar">← Sair / Voltar</a>
+</div>
 </body>
 </html>

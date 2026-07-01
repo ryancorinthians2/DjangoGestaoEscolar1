@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Curso, Disciplina, Professor, Atribuicao, Aluno
 
 def index(request):
@@ -12,8 +13,10 @@ def index(request):
             return redirect('aluno')
     return render(request, 'gestao/index.html')
 
+@login_required
 def aluno(request):
-    aluno_atual = Aluno.objects.first()
+  
+    aluno_atual = Aluno.objects.last()
     
     if aluno_atual:
         nome_aluno = aluno_atual.nome
@@ -31,6 +34,7 @@ def aluno(request):
     }
     return render(request, 'gestao/aluno.html', context)
 
+@login_required
 def professor(request):
     professor_atual = Professor.objects.first()
     
@@ -48,6 +52,7 @@ def professor(request):
     }
     return render(request, 'gestao/professor.html', context)
 
+@login_required
 def diretor(request):
     if not Professor.objects.exists():
         Professor.objects.create(nome="Mestre Yoda")
@@ -90,8 +95,19 @@ def diretor(request):
             
             if aluno_nome and curso_obj:
                 Aluno.objects.create(nome=aluno_nome, curso=curso_obj)
+            elif qual_botao == 'excluir_curso':
+                curso_id = request.POST.get('curso_id')
+            if curso_id:
+                Curso.objects.filter(id=curso_id).delete()
+
+        
+            elif qual_botao == 'excluir_aluno':
+                aluno_id = request.POST.get('aluno_id')
+                if aluno_id:
+                    Aluno.objects.filter(id=aluno_id).delete()
 
         return redirect('diretor')
+
 
     context = {
         'cursos': Curso.objects.all(),

@@ -114,33 +114,84 @@
             <h2>Visão do Sistema</h2>
             
             <h3>Cursos Cadastrados</h3>
-            <ul>
-                {% for curso in cursos %} <li>{{ curso }}</li> {% empty %} <li>Nenhum curso.</li> {% endfor %}
-            </ul>
-
-            <h3>Atribuições (Professor -> Disciplina)</h3>
-            <table>
-                <thead><tr><th>Professor</th><th>Disciplina</th></tr></thead>
+<ul>
+            <div class="card-visualizacao" style="margin-top: 20px;">
+            <h3>Professores Cadastrados</h3>
+            <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f2f2f2;">
+                        <th style="padding: 8px;">ID</th>
+                        <th style="padding: 8px;">Nome do Professor</th>
+                        <th style="padding: 8px;">Ação</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    {% for atri in atribuicoes %}
-                        <tr><td>{{ atri.professor.nome }}</td><td>{{ atri.disciplina.nome }}</td></tr>
+                    {% for professor in professores %}
+                        <tr>
+                            <td style="padding: 8px;">{{ professor.id }}</td>
+                            <td style="padding: 8px;">{{ professor.nome }}</td>
+                            <td style="padding: 8px;">
+                                <form action="{% url 'diretor' %}" method="POST" style="display:inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="acao" value="excluir_professor">
+                                    <input type="hidden" name="professor_id" value="{{ professor.id }}">
+                                    <button type="submit" style="background-color: #dc3545; color: white; padding: 2px 6px; border: none; cursor: pointer; border-radius: 3px;">Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
                     {% empty %}
-                        <tr><td colspan="2">Nenhuma disciplina atribuída ainda.</td></tr>
+                        <tr>
+                            <td colspan="3" style="padding: 8px; text-align: center;">Nenhum professor cadastrado ainda.</td>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
+    {% for curso in cursos %}
+        <li style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            {{ curso.nome }}
+            <form action="{% url 'diretor' %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="acao" value="excluir_curso">
+                <input type="hidden" name="curso_id" value="{{ curso.id }}">
+                <button type="submit" style="background-color: #dc3545; color: white; padding: 2px 8px; border: none; cursor: pointer;">X</button>
+            </form>
+        </li>
+    {% empty %}
+        <li>Nenhum curso cadastrado.</li>
+    {% endfor %}
+</ul>
 
-            <h3>Alunos Matriculados</h3>
-            <table>
-                <thead><tr><th>Aluno</th><th>Curso</th></tr></thead>
-                <tbody>
-                    {% for mat in matriculas %}
-                        <tr><td>{{ mat.nome }}</td><td>{{ mat.curso.nome }}</td></tr>
-                    {% empty %}
-                        <tr><td colspan="2">Nenhum aluno matriculado ainda.</td></tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+<hr>
+
+<h3>Alunos Matriculados</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Curso</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mat in matriculas %}
+            <tr>
+                <td>{{ mat.nome }}</td>
+                <td>{{ mat.curso.nome }}</td>
+                <td>
+                    <form action="{% url 'diretor' %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="acao" value="excluir_aluno">
+                        <input type="hidden" name="aluno_id" value="{{ mat.id }}">
+                        <button type="submit" style="background-color: #dc3545; color: white; padding: 2px 6px; border: none; cursor: pointer;">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="3">Nenhum aluno matriculado ainda.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
         </div>
     </div>
 

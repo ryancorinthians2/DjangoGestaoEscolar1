@@ -108,3 +108,6 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
+LOGIN_URL = '/admin/login/'
+
+
