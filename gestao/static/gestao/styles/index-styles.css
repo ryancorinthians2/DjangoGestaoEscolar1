@@ -1,0 +1,125 @@
+/* Configuração geral do fundo da tela */
+body {
+    background-image: url("../images/escola.avif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+}
+
+
+.container {
+    width: 100%;
+    max-width: 450px; 
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.container h1 {
+    color: #ffffff;
+    text-align: center;
+    font-size: 36px; 
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
+}
+
+
+.login-form {
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #222222;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px; 
+    font-size: 16px;
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+
+.form-group input:focus {
+    border-color: #2e5b42;
+    outline: none;
+}
+
+
+.btn-entrar {
+    width: 100%;
+    padding: 14px;
+    background-color: #2e5b42; 
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.btn-entrar:hover {
+    background-color: #1f3f2e;
+
+/* Container que junta os três botões em um bloco só */
+.aba-selector {
+    display: flex;
+    background-color: #e2ebf0; /* Um tom cinza claro azulado de fundo */
+    padding: 6px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    gap: 4px;
+}
+
+/* Estilo base de todos os 3 botões */
+.aba-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #555555;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Como fica o botão selecionado (o Aluno começa assim) */
+.aba-btn.active {
+    background-color: #2e5b42; /* O mesmo verde escuro do seu botão principal */
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito leve ao passar o mouse nos botões não selecionados */
+.aba-btn:hover:not(.active) {
+    background-color: rgba(46, 91, 66, 0.1);
+    color: #2e5b42;
+}
+}

@@ -1,0 +1,89 @@
+/* Configuração geral do fundo da tela */
+body {
+    background-image: url("../images/escola.avif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Garante que o conteúdo fique no centro vertical da tela */
+}
+
+/* O container principal que segura tudo exatamente no meio */
+.container {
+    width: 100%;
+    max-width: 450px; /* Define uma largura máxima confortável */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* O título "Seja bem Vindo!" em branco e centralizado */
+.container h1 {
+    color: #ffffff;
+    text-align: center;
+    font-size: 36px; /* Texto maior */
+    margin-bottom: 30px; /* Empurra o formulário um pouco para baixo */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra para dar leitura perfeita sobre o fundo */
+}
+
+/* O Card do formulário (esbranquiçado e elegante) */
+.login-form {
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Organização de cada bloco (Label em cima, Input embaixo) */
+.form-group {
+    margin-bottom: 24px;
+}
+
+/* Estilo das palavras 'Usuário' e 'Senha' */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #222222;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Inputs maiores e mais robustos */
+.form-group input {
+    width: 100%;
+    padding: 14px; /* Mais espaçoso por dentro */
+    font-size: 16px;
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Efeito quando o usuário clica para digitar */
+.form-group input:focus {
+    border-color: #2e5b42;
+    outline: none;
+}
+
+/* Botão entrar grande e destacado */
+.btn-entrar {
+    width: 100%;
+    padding: 14px;
+    background-color: #2e5b42; /* Verde escuro combinando com o quadro */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.btn-entrar:hover {
+    background-color: #1f3f2e;
+}

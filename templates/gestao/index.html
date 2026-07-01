@@ -4,21 +4,70 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Página Inicial</title>
+        <title>Login</title>
         <link rel="stylesheet" href="{% static 'gestao/styles/index-styles.css' %}">
     
     </head>
-    <body>
+ <body>
+
+    <div class="container">
+        
         <h1>Seja bem Vindo!</h1>
-        <div class="container">
-            <form action="{% url 'home' %}" method="POST" class="login-form">
-                        {% csrf_token %}
-                        <label for="usuario">Usuario</label>
-                        <input type="text" id="usuario">
-                        <label for="senha">Senha</label>
-                        <input type="password" id="usuario">
-                        <button type="submit">Entrar</button>
-            </form>
+        
+       <div class="login-form">
+    <div class="aba-selector">
+        <button type="button" class="aba-btn active" data-perfil="aluno">Aluno</button>
+        <button type="button" class="aba-btn" data-perfil="professor">Professor</button>
+        <button type="button" class="aba-btn" data-perfil="diretor">Diretor</button>
+    </div>
+
+    <form action="{% url 'index' %}" method="POST">
+        {% csrf_token %}
+        
+        <input type="hidden" id="user_type" name="user_type" value="aluno">
+        
+        <div class="form-group">
+            <label for="usuario">Usuário</label>
+            <input type="text" id="usuario" name="username" placeholder="Digite seu usuário">
         </div>
+        
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="password" placeholder="Digite sua senha">
+        </div>
+        
+        <button type="submit" class="btn-entrar">Entrar</button>
+    </form> 
+    </div>
+
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var botoes = document.querySelectorAll('.aba-btn');
+                var inputHidden = document.getElementById('user_type');
+                var botaoEntrar = document.querySelector('.btn-entrar');
+
+                botoes.forEach(function(botao) {
+                    botao.addEventListener('click', function() {
+                        var perfil = this.getAttribute('data-perfil');
+
+
+                        if (inputHidden) {
+                            inputHidden.value = perfil;
+                        }
+
+                        botoes.forEach(function(b) { b.classList.remove('active'); });
+                        this.classList.add('active');
+
+                        if (botaoEntrar) {
+                            if (perfil === 'aluno') botaoEntrar.textContent = 'Entrar como Aluno';
+                            if (perfil === 'professor') botaoEntrar.textContent = 'Entrar como Professor';
+                            if (perfil === 'diretor') botaoEntrar.textContent = 'Entrar como Diretor';
+                        }
+                    });
+                });
+            });
+        </script>
+
     </body>
 </html>

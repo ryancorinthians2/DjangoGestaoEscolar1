@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel do Professor</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 500px; }
+        h1 { color: #007bff; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Painel do Professor</h1>
+        <p><strong>Professor:</strong> Mestre Yoda</p>
+        <hr>
+        <h3>Suas Disciplinas Atribuídas:</h3>
+        <ul>
+            <li>Desenvolvimento Web (Turma A)</li>
+            <li>Estrutura de Dados (Turma B)</li>
+        </ul>
+        <br>
+        <a href="{% url 'index' %}">Sair / Voltar</a>
+    </div>
+
+</body>
+</html>
